@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'allows'
-  s.version     = '0.0.2'
+  s.version     = '0.1.0'
   s.date        = '2012-09-24'
   s.summary     = "Simple Authorization library"
   s.description = "Simple Authorization for Rails"
@@ -10,7 +10,6 @@ Gem::Specification.new do |s|
   s.files = Dir["**/*"] - Dir["*.gem"] - ["Gemfile.lock"]
 
   s.require_paths = ["lib"]  
-  s.add_development_dependency "actionpack"
   s.add_development_dependency "turn"
   s.add_development_dependency "debugger"
   s.add_development_dependency "rake"

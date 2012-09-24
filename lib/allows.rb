@@ -1,5 +1,4 @@
 require 'exceptions'
-require 'debugger'
 
 module Allows
 
@@ -11,12 +10,8 @@ module Allows
     
     class << base
       attr_accessor :permissions
-      #cattr_accessor :permission_checker
       attr_accessor :permission_checker
     end
-    #class << self
-    #  attr_accessor :permission_checker
-    #end
 
     # set default permission_checker
     base.permission_checker = :current_user
