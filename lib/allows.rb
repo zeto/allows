@@ -1,3 +1,4 @@
+require 'action_controller'
 require 'exceptions'
 
 module Allows
@@ -10,7 +11,7 @@ module Allows
     
     class << base
       attr_accessor :permissions
-      attr_accessor :permission_checker
+      cattr_accessor :permission_checker
     end
 
     # set default permission_checker

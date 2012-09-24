@@ -4,7 +4,7 @@ require 'minitest/autorun'
 require 'turn'
 require 'allows'
 require 'rubygems'
-require 'action_pack'
+#require 'action_pack'
 require 'action_controller'
 
 class AllowsTest < MiniTest::Unit::TestCase
