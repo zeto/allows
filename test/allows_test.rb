@@ -55,11 +55,11 @@ class AllowsTest < MiniTest::Unit::TestCase
     assert TestController.permissions.keys.include? :create
   end
 
-  def test_generate_unathorized
-    TestController.set_permissions
+  def test_generate_unauthorized
+    TestControllerNone.set_permissions
 
     assert_raises Unauthorized do
-     TestController.new.check_permissions
+     TestControllerNone.new.check_permissions
     end
   end
 
@@ -133,4 +133,22 @@ end
 
 class RequirementStub
   def message; 'testing'; end
+end
+
+class TestControllerNone < ActionController::Base
+  include Allows
+
+  allow :admin
+
+  def show; end
+
+  protected
+
+  def action_name; :show; end
+  def current_user; PermissionCheckerNone.new; end
+  
+end
+
+class PermissionCheckerNone
+  def admin?; false; end
 end

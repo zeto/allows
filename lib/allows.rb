@@ -1,4 +1,5 @@
 require 'exceptions'
+require 'debugger'
 
 module Allows
 
@@ -24,23 +25,30 @@ module Allows
   public  
 
   def check_permissions
+    im_allowed = false
+
     klass = self.class
     if klass.permission_checker && respond_to?(klass.permission_checker)
       if klass.permissions
         permissions_for_action = klass.permissions[action_name.to_sym]
         if permissions_for_action
           permissions_for_action.each do |permission|
-            assert_permission permission
+            if assert_permission(permission)
+              im_allowed = true
+            end
           end
         else
           # Can execute the action. No "allow" rule affects this action.
+          im_allowed = false
         end
       else
         # Can execute any action. Controller does not declare any "allow" rule
+        im_allowed = true
       end
     else
       raise NoPermissionChecker # Permission checker isnt defined, so no permissions can be validated
     end
+    raise Unauthorized unless im_allowed
   end
 
   protected
@@ -57,9 +65,9 @@ module Allows
     # Permission is something like: allow reader_of_post (<permission>_of_<target>)
     if targetted_permission && targetted_permission.captures.size == 2
       raise NoInstanceVariable unless instance_variable_get("@#{targetted_permission[:target]}")
-      raise Unauthorized unless (self.send self.class.permission_checker).send "#{targetted_permission[:method]}?", instance_variable_get("@#{targetted_permission[:target]}")
+      (self.send self.class.permission_checker).send "#{targetted_permission[:method]}?", instance_variable_get("@#{targetted_permission[:target]}")
     else
-      raise Unauthorized unless (self.send self.class.permission_checker).send "#{permission.to_s}?"
+      (self.send self.class.permission_checker).send "#{permission.to_s}?"
     end
   end
 
