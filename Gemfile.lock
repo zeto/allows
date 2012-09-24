@@ -1,7 +1,8 @@
 PATH
   remote: .
   specs:
-    allows (0.0.2)
+    allows (0.1.0)
+      actionpack
 
 GEM
   remote: http://rubygems.org/
@@ -55,7 +56,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  actionpack
   allows!
   debugger
   rake
