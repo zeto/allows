@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.description = "Simple Authorization for Rails"
   s.authors     = ["Jose Goncalves"]
   s.email       = 'zetoeu@gmail.com'
-  s.homepage    = 'http://rubygems.org/gems/control'
+  s.homepage    = 'http://github.com/zeto/allows'
   s.files = Dir["**/*"] - Dir["*.gem"] - ["Gemfile.lock"]
 
   s.require_paths = ["lib"]  
