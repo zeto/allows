@@ -35,7 +35,7 @@ module Allows
           end
         else
           # Can execute the action. No "allow" rule affects this action.
-          im_allowed = false
+          im_allowed = true
         end
       else
         # Can execute any action. Controller does not declare any "allow" rule
