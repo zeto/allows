@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'allows'
-  s.version     = '0.2.1'
+  s.version     = '0.3.0'
   s.date        = '2012-09-24'
   s.summary     = "Simple Authorization library"
   s.description = "Simple Authorization for Rails"
