@@ -58,7 +58,7 @@ class AllowsTest < MiniTest::Unit::TestCase
   def test_generate_unauthorized
     TestControllerNone.set_permissions
 
-    assert_raises Unauthorized do
+    assert_raises Allows::Unauthorized do
      TestControllerNone.new.check_permissions
     end
   end
