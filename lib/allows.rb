@@ -15,7 +15,7 @@ module Allows
     end
 
     # set default permission_checker
-    base.permission_checker = :current_user
+    base.permission_checker = :main_current_user
   end
 
   public  
